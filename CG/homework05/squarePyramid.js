@@ -10,49 +10,17 @@ class SquarePyramid
      /|       /|
     v1-------v2
 
-    밑기둥 (v0,v1,v2,v3), 
-    (v0,v1,v4), 
-    (v3,v2,v4), 
-    (v2,v1,v4),
-    (v0,v3,v4)
+    base (v0,v1,v2,v3), 
+    front (v0,v1,v4), 
+    right (v3,v2,v4), 
+    back(v2,v1,v4),
+    left (v0,v3,v4)
 
-    [(v0,v1,v2), (v0,v2,v3)]
+    base [(v0,v1,v2), (v0,v2,v3)]
     front [(v0,v1,v4)]
     right [(v3,v2,v4)]
     back [(v2,v1,v4)]
     left [(v0,v3,v4)]
-
-3) Vertex normals
-    Each vertex in the same face has the same normal vector (flat shading)
-    The normal vector is the same as the face normal vector
-    base face: (0,-1,0), front face: (0,0.4472,-0.8944), 
-    right face: (0.8944,0.4472,0), back face: (0,0.4472,0.8944), 
-    left face: (-0.8944,0.4472,0)
-
-4) Vertex colors
-    Each vertex in the same face has the same color (flat shading)
-    The color is the same as the face color
-    base face: red (1,0,0,1), front face: yellow (1,1,0,1), 
-    right face: green (0,1,0,1), back face: cyan (0,1,1,1), 
-    left face: blue (0,0,1,1)
-
-5) Vertex texture coordinates
-    Each vertex in the same face has the same texture coordinates
-    base face: v0(0,0), v1(0,1), v2(1,1), v3(1,0)
-    front face: v0(0,0), v1(1,0), v4(0.5,1)
-    right face: v3(0,0), v2(1,0), v4(0.5,1)
-    back face: v2(0,0), v1(1,0), v4(0.5,1)
-    left face: v0(0,0), v3(1,0), v4(0.5,1)
-
-6) Parameters:
-    1] gl: WebGLRenderingContext
-    2] options:
-        1> color: array of 4 floats (default: [0.8, 0.8, 0.8, 1.0 ])
-           in this case, all vertices have the same given color
-
-7) Vertex shader: the location (0: position attrib (vec3), 1: normal attrib (vec3),
-                            2: color attrib (vec4), and 3: texture coordinate attrib (vec2))
-8) Fragment shader: should catch the vertex color from the vertex shader
 -----------------------------------------------------------------------------*/
 
 export class squarePyramid {
