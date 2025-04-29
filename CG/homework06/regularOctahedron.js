@@ -19,7 +19,7 @@ export class Octahedron {
             0, -0.7, 0,   0.7, 0, 0,    0, 0, -0.7
         ]);
 
-        // compute normals per face, flat shading
+        // compute normals per face
         const norms = [];
         for (let i = 0; i < this.vertices.length; i += 9) {
             const v0 = [this.vertices[i], this.vertices[i+1], this.vertices[i+2]];
@@ -30,14 +30,11 @@ export class Octahedron {
             let nx = e1[1]*e2[2] - e1[2]*e2[1];
             let ny = e1[2]*e2[0] - e1[0]*e2[2];
             let nz = e1[0]*e2[1] - e1[1]*e2[0];
-            const len = Math.hypot(nx, ny, nz);
-            nx /= len; ny /= len; nz /= len;
-            // each face has 3 identical normals
             for (let k = 0; k < 3; k++) norms.push(nx, ny, nz);
         }
         this.normals = new Float32Array(norms);
 
-        // default flat color or provided
+        // default flat color
         const nVerts = this.vertices.length / 3;
         this.colors = new Float32Array(nVerts * 4);
         const c = options.color || [0.8, 0.8, 0.8, 1.0];
@@ -45,7 +42,6 @@ export class Octahedron {
             this.colors.set(c, i*4);
         }
 
-        // hardcoded UVs for a single 1920x640 image wrapped across all 8 faces continuously
         this.texCoords = new Float32Array([
             // top faces
             0.5,1.0,   0.5,0.5,   0.75,0.5,
