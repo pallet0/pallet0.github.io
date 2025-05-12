@@ -35,7 +35,7 @@ const cylinder = new Cylinder(gl, 32);
 const axes = new Axes(gl, 1.5); // create an Axes object with the length of axis 1.5
 
 const cameraPos = vec3.fromValues(0, 0, 3);
-const lightDirection = vec3.fromValues(-1.0, -0.25, -0.5);
+const lightDirection = vec3.fromValues(1.0, 0.25, 0.5);
 const shininess = 32.0;
 
 
