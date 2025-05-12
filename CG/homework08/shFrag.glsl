@@ -45,7 +45,7 @@ void main() {
     
     // specular
     vec3 viewDir = normalize(u_viewPos - fragPos);
-    vec3 reflectDir = reflect(lightDir, norm);
+    vec3 reflectDir = reflect(-lightDir, norm);
 
     float dotViewDirReflectDir = dot(viewDir, reflectDir);
     float spec;
